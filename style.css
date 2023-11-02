@@ -6,7 +6,7 @@
 
 body {
   display: flex;
-  background: red;
+  
   min-height: 100vh;
   text-align: center;
   align-items: center;
