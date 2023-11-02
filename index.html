@@ -102,93 +102,116 @@ Loading......
 </html>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Side Nav</title>
+        <style type="text/css">
+            
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            body {
+                font-family: Open Sans, Arial, sans-serif;
+                overflow-x: hidden;
+            }
+            
+            nav {
+                position: fixed;
+                z-index: 1000;
+                top: 0;
+                bottom: 0;
+                width: 200px;
+                background-color: #036;
+                transform: translate3d(-200px, 0, 0);
+                transition: transform 0.4s ease;
+            }
+            .active-nav nav {
+                transform: translate3d(0, 0, 0);
+            }
+            nav ul {
+                list-style: none;
+                margin-top: 100px;
+            }
+            nav ul li a {
+                text-decoration: none;
+                display: block;
+                text-align: center;
+                color: #fff;
+                padding: 10px 0;
+            }
+            
+            .nav-toggle-btn {
+                display: block;
+                position: absolute;
+                left: 200px;
+                width: 40px;
+                height: 40px;
+                background-color: #666;
+            }
+            
+            .content {
+                padding-top: 300px;
+                height: 2000px;
+                background-color: #ccf;
+                text-align: center;
+                transition: transform 0.4s ease;
+            }
+            .active-nav .content {
+                transform: translate3d(200px, 0, 0);
+            }
+            
+            
+            
+        </style>
+    </head>
+    <body>
+        
+        <nav>
+            
+            <a href="#" class="nav-toggle-btn"></a>
+            
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+        </nav>
+        
+        
+        <div class="content">
+            <h1>This is content</h1>
+        </div>
+        
+        
+        
+        
+        
+        
 
-		<title>Scroll and intro disappears</title>
-		<style type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        
+        (function() {
+            
+            var bodyEl = $('body'),
+                navToggleBtn = bodyEl.find('.nav-toggle-btn');
+            
+            navToggleBtn.on('click', function(e) {
+                bodyEl.toggleClass('active-nav');
+                e.preventDefault();
+            });
+            
+            
+            
+        })();
+        
+        
+    </script>
 
-			* {
-				margin: 0;
-				padding: 0;
-			}
-			body {
-				font-family: Open Sans;
-			}
-
-			.intro {
-				background: url('forest.jpg') no-repeat;
-				background-position: 50% 50%;
-				background-size: cover;
-			}
-			.intro h1 {
-				text-align: center;
-				text-transform: uppercase;
-				font-size: 7em;
-				color: #FF3;
-			}
-
-			.content {
-				height: 2000px;
-				padding: 100px 0;
-				background-color: #aaa;
-			}
-			.content h2, .content p {
-				width: 60%;
-				margin: 0 auto;
-			}
-
-
-
-		</style>
-
-	</head>
-	<body>
-
-		<div class="intro">
-			<h1>This is intro</h1>
-		</div>
-		
-		<div class="content">
-			<h2>This is content</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique dui odio, et faucibus velit porttitor vitae. Morbi dignissim laoreet lectus, ut consequat dolor accumsan et. Nunc ut tincidunt massa. Vivamus in nulla sed elit pulvinar pretium. Proin euismod vehicula magna, quis porta augue condimentum at. Vestibulum pharetra sem id faucibus rhoncus. Vivamus nulla elit, tristique sit amet lacinia a, sodales sit amet purus. Proin vehicula feugiat interdum. Praesent congue consectetur ligula, nec interdum sapien convallis eget. Duis in sem bibendum, congue dui nec, bibendum augue. Suspendisse potenti. Ut nec vulputate lorem. Aenean a mollis tortor, a rutrum arcu.</p>
-		</div>
-
-
-
-
-
-		
-
-
-
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script type="text/javascript">
-
-			(function() {
-
-				var windowH = $(window).height(),
-					introEl = $('div.intro'),
-					introHeadingH = introEl.find('h1').height();
-
-				introEl.css('padding', (windowH - introHeadingH)/2 + 'px 0');
-
-				$(document).on('scroll', function() {
-					introEl.slideUp(1000, function() { $(document).off('scroll'); });
-				});
-
-
-
-			})();
-
-
-
-
-
-
-		</script>
-
-	</body>
+    </body>
 </html>
